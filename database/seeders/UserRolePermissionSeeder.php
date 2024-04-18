@@ -23,9 +23,9 @@ class UserRolePermissionSeeder extends Seeder
             'create-user',
             'edit-user',
             'delete-user',
-            'create-product',
-            'edit-product',
-            'delete-product'
+            'create-book',
+            'edit-book',
+            'delete-book'
         ];
  
         // Create permissions
@@ -36,7 +36,7 @@ class UserRolePermissionSeeder extends Seeder
         // Create roles
         $superAdminRole = Role::create(['name' => 'Super Admin']);
         $adminRole = Role::create(['name' => 'Admin']);
-        $productManagerRole = Role::create(['name' => 'Product Manager']);
+        $storeManagerRole = Role::create(['name' => 'Store Manager']);
 
         // Sync all permissions to super admin role
         $permissions = Permission::pluck('id')->all();
@@ -47,16 +47,16 @@ class UserRolePermissionSeeder extends Seeder
             'create-user',
             'edit-user',
             'delete-user',
-            'create-product',
-            'edit-product',
-            'delete-product'
+            'create-book',
+            'edit-book',
+            'delete-book'
         ]);
   
         // Assign specific permissions to product manager role
-        $productManagerRole->givePermissionTo([
-            'create-product',
-            'edit-product',
-            'delete-product'
+        $storeManagerRole->givePermissionTo([
+            'create-book',
+            'edit-book',
+            'delete-book'
         ]);
 
         // Creating Super Admin User
@@ -78,12 +78,12 @@ class UserRolePermissionSeeder extends Seeder
         $adminUser->assignRole($adminRole);
 
         // Creating Product Manager User
-        $productManagerUser = User::create([
+        $storeManagerUser = User::create([
             'name' => 'neha', 
             'mobile' =>'1234567890',
             'email' => 'neha@gmail.com',
             'password' => Hash::make('12345678')
         ]);
-        $productManagerUser->assignRole($productManagerRole);
+        $storeManagerUser->assignRole($storeManagerRole);
     }
 }
