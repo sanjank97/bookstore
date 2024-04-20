@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\BookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,7 +28,12 @@ Route::post('/users/{id}/restore', [UserController::class, 'restoreUser'])->name
 Route::delete('/users/{id}/delete', [UserController::class, 'deleteUser'])->name('users.delete');
 
 
+Route::get('/books/trashed', [BookController::class, 'trashedBooks'])->name('books.trashed');
+Route::post('/books/{id}/restore', [BookController::class, 'restoreBook'])->name('books.restore');
+Route::delete('/books/{id}/delete', [BookController::class, 'deleteBook'])->name('books.delete');
+
 Route::resources([
+    'books' => BookController::class,
     'roles' => RoleController::class,
     'users' => UserController::class,
 ]);

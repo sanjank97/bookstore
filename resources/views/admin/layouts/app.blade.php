@@ -49,6 +49,10 @@
                             @canany(['create-user', 'edit-user', 'delete-user'])
                                 <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
                             @endcanany
+
+                            @canany(['create-book', 'edit-book', 'delete-book'])
+                                <li><a class="nav-link" href="{{ route('books.index') }}">Manage Books</a></li>
+                            @endcanany
                         
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
